@@ -1,67 +1,19 @@
-import 'package:equatable/equatable.dart';
+import 'package:basketball_manager/models/player.dart';
 
-// Models
-class Team extends Equatable {
-  final String id;
-  final String name;
-  final List<Player> players;
-  final double budget;
+/// Temporary in-memory data source.
+/// Swap with API or local database when ready.
+class PlayerRepository {
+  const PlayerRepository();
 
-  const Team({
-    required this.id,
-    required this.name,
-    required this.players,
-    required this.budget,
-  });
-
-  @override
-  List<Object> get props => [id, name, players, budget];
+  List<Player> fetchRoster() => const [
+    Player(id: 1, name: 'Ethan Carter',  position: 'Guard',   rating: 88),
+    Player(id: 2, name: 'Liam Bennett',  position: 'Forward', rating: 92),
+    Player(id: 3, name: 'Noah Thompson', position: 'Center',  rating: 85),
+    Player(id: 4, name: 'Oliver Davis',  position: 'Guard',   rating: 89),
+    Player(id: 5, name: 'Elijah Wilson', position: 'Forward', rating: 91),
+    Player(id: 6, name: 'Lucas Harris',  position: 'Center',  rating: 87),
+    Player(id: 7, name: 'Mason Clark',   position: 'Guard',   rating: 90),
+    Player(id: 8, name: 'Logan Lewis',   position: 'Forward', rating: 86),
+    Player(id: 9, name: 'Owen Walker',   position: 'Center',  rating: 84),
+  ];
 }
-
-class Player extends Equatable {
-  final String id;
-  final String name;
-  final int age;
-  final String position;
-  final int rating;
-
-  const Player({
-    required this.id,
-    required this.name,
-    required this.age,
-    required this.position,
-    required this.rating,
-  });
-
-  @override
-  List<Object> get props => [id, name, age, position, rating];
-}
-
-// Repository
-class TeamRepository {
-  Team? _currentTeam;
-
-  Future<Team?> getCurrentTeam() async {
-    return _currentTeam;
-  }
-
-  Future<void> saveTeam(Team team) async {
-    _currentTeam = team;
-    // TODO: Implement persistence
-  }
-
-  Future<void> updatePlayer(String playerId, Player updatedPlayer) async {
-    if (_currentTeam == null) return;
-
-    final updatedPlayers = _currentTeam!.players.map((player) {
-      return player.id == playerId ? updatedPlayer : player;
-    }).toList();
-
-    _currentTeam = Team(
-      id: _currentTeam!.id,
-      name: _currentTeam!.name,
-      players: updatedPlayers,
-      budget: _currentTeam!.budget,
-    );
-  }
-} 

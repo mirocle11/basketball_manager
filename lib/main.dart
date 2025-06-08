@@ -1,87 +1,139 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import 'features/team_management/data/team_repository.dart';
+import 'routes/routes.dart';
+import 'features/home/view/splash_screen.dart';
+import 'features/home/view/home_screen.dart';
 import 'features/team_management/view/team_screen.dart';
-import 'features/game_day/view/game_screen.dart';
 import 'features/standings/view/standings_screen.dart';
+import 'features/game_day/view/game_screen.dart';
 
 void main() {
-  runApp(const BasketBallManagerApp());
+  runApp(const BasketballManagerApp());
 }
 
-class BasketBallManagerApp extends StatelessWidget {
-  const BasketBallManagerApp({super.key});
+class BasketballManagerApp extends StatelessWidget {
+  const BasketballManagerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => TeamRepository(),
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: 'Basketball Manager',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
-          useMaterial3: true,
+    // 1) Define a GoRouter
+    final GoRouter router = GoRouter(
+      initialLocation: Routes.splash,
+      routes: [
+        /// ── Splash
+        GoRoute(
+          name: 'splash',
+          path: Routes.splash,
+          builder: (context, state) => const SplashScreen(),
         ),
-        routerConfig: _router,
+
+        /// ── Home
+        GoRoute(
+          name: 'home',
+          path: Routes.home,
+          builder: (context, state) => const HomePage(),
+        ),
+
+        /// ── Team
+        GoRoute(
+          name: 'team',
+          path: Routes.team,
+          builder: (context, state) => const TeamScreen(),
+        ),
+
+        /// ── Standings
+        GoRoute(
+          name: 'standings',
+          path: Routes.standings,
+          builder: (context, state) => const StandingsScreen(),
+        ),
+
+        /// ── Game Day
+        GoRoute(
+          name: 'game_day',
+          path: Routes.gameDay,
+          builder: (context, state) => const GameScreen(),
+        ),
+
+        /// ── Finances (stub or real)
+        GoRoute(
+          name: 'finances',
+          path: Routes.finances,
+          builder: (context, state) => const Scaffold(
+            body: Center(
+              child: Text(
+                'Finances Screen (stub)',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+
+        /// ── News/Events (stub or real)
+        GoRoute(
+          name: 'news',
+          path: Routes.news,
+          builder: (context, state) => const Scaffold(
+            body: Center(
+              child: Text(
+                'News/Events Screen (stub)',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+
+        /// ── Settings (stub or real)
+        GoRoute(
+          name: 'settings',
+          path: Routes.settings,
+          builder: (context, state) => const Scaffold(
+            body: Center(
+              child: Text(
+                'Settings Screen (stub)',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+      ],
+
+      // 2) (Optional) Add a redirect to skip splash if you already have a logged-in state
+      // redirect: (state) {
+      //   final loggedIn = /* your logic */;
+      //   if (state.location == Routes.splash && loggedIn) {
+      //     return Routes.home;
+      //   }
+      //   return null;
+      // },
+    );
+
+    return MaterialApp.router(
+      title: 'Basketball GM',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.grey.shade900,
+        primaryColor: Colors.grey.shade800,
       ),
+
+      // 3) Tell Flutter to use GoRouter
+      routerConfig: router,
     );
   }
 }
 
-final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: '/team',
-      builder: (context, state) => const TeamScreen(),
-    ),
-    GoRoute(
-      path: '/match',
-      builder: (context, state) => const GameScreen(),
-    ),
-    GoRoute(
-      path: '/standings',
-      builder: (context, state) => const StandingsScreen(),
-    ),
-  ],
-);
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+/// Wrap HomeScreen (and BlocProviders) in HomePage if needed
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Basketball Manager'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => context.go('/team'),
-              child: const Text('Team Management'),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => context.go('/match'),
-              child: const Text('Game Day'),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => context.go('/standings'),
-              child: const Text('Standings'),
-            ),
-          ],
-        ),
-      ),
-    );
+    // If you’re using BlocProviders for your team/roster, do it here:
+    // return BlocProvider(
+    //   create: (_) => TeamBloc(repository: TeamRepository()),
+    //   child: const HomeScreen(),
+    // );
+    return const HomeScreen();
   }
 }

@@ -1,90 +1,86 @@
+import 'package:basketball_manager/models/player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../logic/team_bloc.dart';
-import '../data/team_repository.dart';
+
+import 'package:basketball_manager/features/team_management/data/team_repository.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TeamBloc(
-        teamRepository: context.read<TeamRepository>(),
-      )..add(LoadTeam()),
-      child: const TeamView(),
+    final List<Player> roster = const PlayerRepository().fetchRoster();
+
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade900,
+        appBar: AppBar(
+          backgroundColor: Colors.grey.shade900,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => context.pop(),
+          ),
+          title: const Text('Team Management', style: TextStyle(fontWeight: FontWeight.w600)),
+          centerTitle: true,
+          bottom: const TabBar(
+            isScrollable: true,
+            indicatorColor: Colors.white,
+            indicatorWeight: 3,
+            labelPadding: EdgeInsets.symmetric(horizontal: 24),
+            tabs: [
+              Tab(text: 'Roster'),
+              Tab(text: 'Tactics'),
+              Tab(text: 'Training'),
+              Tab(text: 'Contracts'),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            _RosterTab(roster: roster),
+            const _PlaceholderTab(label: 'Tactics'),
+            const _PlaceholderTab(label: 'Training'),
+            const _PlaceholderTab(label: 'Contracts'),
+          ],
+        ),
+      ),
     );
   }
 }
 
-class TeamView extends StatelessWidget {
-  const TeamView({super.key});
+class _RosterTab extends StatelessWidget {
+  const _RosterTab({required this.roster});
+  final List<Player> roster;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.go('/'),
-        ),
-        title: const Text('Team Management'),
-      ),
-      body: BlocBuilder<TeamBloc, TeamState>(
-        builder: (context, state) {
-          if (state is TeamLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is TeamLoaded) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Team: ${state.team.name}',
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: state.team.players.length,
-                    itemBuilder: (context, index) {
-                      final player = state.team.players[index];
-                      return ListTile(
-                        leading: CircleAvatar(
-                          child: Text(player.position[0]),
-                        ),
-                        title: Text(player.name),
-                        subtitle: Text('Rating: ${player.rating}'),
-                        trailing: Text('Age: ${player.age}'),
-                        onTap: () {
-                          // TODO: Implement player details/edit screen
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
-            );
-          } else if (state is TeamError) {
-            return Center(
-              child: Text(
-                'Error: ${state.message}',
-                style: const TextStyle(color: Colors.red),
-              ),
-            );
-          }
-          return const Center(
-            child: Text('Create or select a team to get started'),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // TODO: Implement add player functionality
-        },
-        child: const Icon(Icons.add),
-      ),
+    return ListView.separated(
+      itemCount: roster.length,
+      separatorBuilder: (_, __) => Divider(color: Colors.grey.shade800, height: 1),
+      itemBuilder: (_, i) {
+        final p = roster[i];
+        return ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          title: Text(p.name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
+          subtitle: Text(p.position, style: TextStyle(color: Colors.grey.shade400, fontSize: 13)),
+          trailing: Text('${p.rating}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
+          onTap: () {
+            // context.push('/player/${p.id}');
+          },
+        );
+      },
     );
   }
-} 
+}
+
+class _PlaceholderTab extends StatelessWidget {
+  const _PlaceholderTab({required this.label});
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Text('$label (coming soon)', style: TextStyle(color: Colors.grey.shade400)),
+  );
+}
