@@ -1,4 +1,5 @@
 import 'package:basketball_manager/models/player.dart';
+import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,7 +21,7 @@ class TeamScreen extends StatelessWidget {
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () => context.pop(),
+            onPressed: () => context.go(Routes.home),
           ),
           title: const Text('Team Management', style: TextStyle(fontWeight: FontWeight.w600)),
           centerTitle: true,

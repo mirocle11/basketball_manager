@@ -17,7 +17,7 @@ class DataService {
 
   // Player management
   List<Player> get players => List.unmodifiable(_players);
-  
+
   void addPlayer(Player player) {
     _players.add(player);
   }
@@ -28,7 +28,7 @@ class DataService {
 
   // Team stats management
   Map<String, int> get teamStats => Map.unmodifiable(_teamStats);
-  
+
   void updateStat(String stat, int value) {
     if (_teamStats.containsKey(stat)) {
       _teamStats[stat] = value;
@@ -40,4 +40,4 @@ class DataService {
       _teamStats[stat] = (_teamStats[stat] ?? 0) + 1;
     }
   }
-} 
+}
