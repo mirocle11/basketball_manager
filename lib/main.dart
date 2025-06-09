@@ -1,3 +1,4 @@
+import 'package:basketball_manager/features/league/view/league_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -54,6 +55,13 @@ class BasketballManagerApp extends StatelessWidget {
           name: 'game_day',
           path: Routes.gameDay,
           builder: (context, state) => const GameScreen(),
+        ),
+
+        /// ── League
+        GoRoute(
+          name: 'league',
+          path: Routes.league,
+          builder: (context, state) => const LeagueScreen(),
         ),
 
         /// ── Finances (stub or real)

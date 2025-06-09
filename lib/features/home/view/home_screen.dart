@@ -133,6 +133,13 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   _ActionButton(
+                    label: 'League',
+                    icon: Icons.public,
+                    onTap: () {
+                      context.push(Routes.league);
+                    },
+                  ),
+                  _ActionButton(
                     label: 'Finances',
                     icon: Icons.attach_money,
                     onTap: () {
