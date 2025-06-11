@@ -1,5 +1,5 @@
 import 'package:basketball_manager/features/standings/data/standings_repository.dart';
-import 'package:basketball_manager/models/team_standing.dart';
+import 'package:basketball_manager/domain/entities/team_standing.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

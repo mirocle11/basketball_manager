@@ -1,4 +1,4 @@
-import 'package:basketball_manager/models/player.dart';
+import 'package:basketball_manager/domain/entities/player.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -65,7 +65,7 @@ class _RosterTab extends StatelessWidget {
         return ListTile(
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           title: Text(p.name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
-          subtitle: Text(p.position, style: TextStyle(color: Colors.grey.shade400, fontSize: 13)),
+          subtitle: Text(p.position.name, style: TextStyle(color: Colors.grey.shade400, fontSize: 13)),
           trailing: Text('${p.rating}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
           onTap: () {
             // context.push('/player/${p.id}');

@@ -1,5 +1,5 @@
 import 'package:basketball_manager/features/league/data/league_repository.dart';
-import 'package:basketball_manager/models/team.dart';
+import 'package:basketball_manager/domain/entities/team.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,11 +26,11 @@ class LeagueScreen extends StatelessWidget {
           return ExpansionTile(
             title: Text(team.name, style: const TextStyle(color: Colors.white)),
             subtitle: Text(team.city, style: TextStyle(color: Colors.grey.shade400)),
-            children: team.players
+            children: team.roster
                 .map(
                   (p) => ListTile(
                 title: Text(p.name, style: const TextStyle(color: Colors.white)),
-                subtitle: Text(p.position, style: TextStyle(color: Colors.grey.shade400)),
+                subtitle: Text(p.position.name, style: TextStyle(color: Colors.grey.shade400)),
                 trailing: Text('${p.rating}', style: const TextStyle(color: Colors.white)),
               ),
             )

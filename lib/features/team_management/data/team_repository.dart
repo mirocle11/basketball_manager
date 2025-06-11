@@ -1,19 +1,62 @@
-import 'package:basketball_manager/models/player.dart';
+import 'package:basketball_manager/domain/entities/player.dart';
 
-/// Temporary in-memory data source.
-/// Swap with API or local database when ready.
 class PlayerRepository {
   const PlayerRepository();
 
-  List<Player> fetchRoster() => const [
-    Player(id: 1, name: 'Ethan Carter',  position: 'Guard',   rating: 88),
-    Player(id: 2, name: 'Liam Bennett',  position: 'Forward', rating: 92),
-    Player(id: 3, name: 'Noah Thompson', position: 'Center',  rating: 85),
-    Player(id: 4, name: 'Oliver Davis',  position: 'Guard',   rating: 89),
-    Player(id: 5, name: 'Elijah Wilson', position: 'Forward', rating: 91),
-    Player(id: 6, name: 'Lucas Harris',  position: 'Center',  rating: 87),
-    Player(id: 7, name: 'Mason Clark',   position: 'Guard',   rating: 90),
-    Player(id: 8, name: 'Logan Lewis',   position: 'Forward', rating: 86),
-    Player(id: 9, name: 'Owen Walker',   position: 'Center',  rating: 84),
+  List<Player> fetchRoster() => [
+    const Player(
+      id: 1,
+      name: 'Ethan Carter',
+      position: Position.guard,
+      rating: 88,
+    ),
+    const Player(
+      id: 2,
+      name: 'Liam Bennett',
+      position: Position.forward,
+      rating: 92,
+    ),
+    const Player(
+      id: 3,
+      name: 'Noah Thompson',
+      position: Position.center,
+      rating: 85,
+    ),
+    const Player(
+      id: 4,
+      name: 'Oliver Davis',
+      position: Position.guard,
+      rating: 89,
+    ),
+    const Player(
+      id: 5,
+      name: 'Elijah Wilson',
+      position: Position.forward,
+      rating: 91,
+    ),
+    const Player(
+      id: 6,
+      name: 'Lucas Harris',
+      position: Position.center,
+      rating: 87,
+    ),
+    const Player(
+      id: 7,
+      name: 'Mason Clark',
+      position: Position.guard,
+      rating: 90,
+    ),
+    const Player(
+      id: 8,
+      name: 'Logan Lewis',
+      position: Position.forward,
+      rating: 86,
+    ),
+    const Player(
+      id: 9,
+      name: 'Owen Walker',
+      position: Position.center,
+      rating: 84,
+    ),
   ];
 }

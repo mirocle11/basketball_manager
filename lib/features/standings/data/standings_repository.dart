@@ -1,4 +1,4 @@
-import 'package:basketball_manager/models/team_standing.dart';
+import 'package:basketball_manager/domain/entities/team_standing.dart';
 
 class StandingsRepository {
   const StandingsRepository();
