@@ -2,6 +2,7 @@ import 'package:basketball_manager/domain/entities/player.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../routes/routes.dart';
 
 import 'package:basketball_manager/features/team_management/data/team_repository.dart';
 
