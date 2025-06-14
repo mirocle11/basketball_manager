@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '/routes/routes.dart';
+import 'package:basketball_manager/routes/routes.dart';
+import 'package:basketball_manager/core/app_constants.dart';
 
 /// If you already have a TeamBloc or other providers, wrap HomeScreen
 /// with BlocProviders up in main.dart. For now, this is just the UI.
@@ -14,23 +15,19 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
         child: Column(
           children: [
             /// ── Top section: Team name + settings icon
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              padding: AppPaddings.screen,
               child: Row(
                 children: [
                   Expanded(
                     child: Text(
                       _teamName,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: AppTextStyles.h2,
                     ),
                   ),
                   IconButton(
@@ -38,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       // Using go_router: go (replace) or push
                       context.push(Routes.settings);
                     },
-                    icon: const Icon(Icons.settings, color: Colors.white),
+                    icon: const Icon(Icons.settings, color: AppColors.primaryText),
                   ),
                 ],
               ),
@@ -46,66 +43,55 @@ class HomeScreen extends StatelessWidget {
 
             /// ── Season Record Card
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: AppPaddings.horizontal,
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: AppPaddings.vertical,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade800,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.grey.shade700),
+                  color: AppColors.surface,
+                  borderRadius: AppRadii.card,
+                  border: Border.all(color: AppColors.border),
                 ),
                 child: Column(
                   children: [
                     Text(
                       _seasonRecord,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: AppTextStyles.hRecord,
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: AppPaddings.gapSmall),
                     Text(
                       'Season Record',
-                      style: TextStyle(
-                        color: Colors.grey.shade400,
-                        fontSize: 14,
-                      ),
+                      style: AppTextStyles.bodySecondary,
                     ),
                   ],
                 ),
               ),
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: AppPaddings.gapLarge),
 
             /// ── “Quick Actions” Label
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: AppPaddings.horizontal,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Quick Actions',
-                  style: TextStyle(
-                    color: Colors.grey.shade300,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: AppTextStyles.h3.copyWith(color: AppColors.secondaryText),
                 ),
               ),
             ),
 
-            const SizedBox(height: 12),
+            const SizedBox(height: AppPaddings.gap),
 
             /// ── Grid of Action Buttons
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: AppPaddings.horizontal,
               child: GridView.count(
                 shrinkWrap: true,
                 crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
+                crossAxisSpacing: AppPaddings.gap,
+                mainAxisSpacing: AppPaddings.gap,
                 childAspectRatio: 3, // wider buttons
                 children: [
                   _ActionButton(
@@ -158,18 +144,18 @@ class HomeScreen extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade800,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.grey.shade700),
+                          color: AppColors.surface,
+                          borderRadius: AppRadii.card,
+                          border: Border.all(color: AppColors.border),
                         ),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.article, color: Colors.white),
-                            SizedBox(width: 8),
+                            Icon(Icons.article, color: AppColors.primaryText),
+                            SizedBox(width: AppPaddings.gap),
                             Text(
                               'News/Events',
-                              style: TextStyle(color: Colors.white, fontSize: 16),
+                              style: AppTextStyles.body,
                             ),
                           ],
                         ),
@@ -185,9 +171,9 @@ class HomeScreen extends StatelessWidget {
 
       /// ── Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey.shade800,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey.shade500,
+        backgroundColor: AppColors.surface,
+        selectedItemColor: AppColors.primaryText,
+        unselectedItemColor: AppColors.disabled,
         currentIndex: 0, // Home is index 0
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -256,18 +242,18 @@ class _ActionButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade800,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey.shade700),
+          color: AppColors.surface,
+          borderRadius: AppRadii.card,
+          border: Border.all(color: AppColors.border),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: Colors.white),
-            const SizedBox(width: 8),
+            Icon(icon, color: AppColors.primaryText),
+            const SizedBox(width: AppPaddings.gap),
             Text(
               label,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
+              style: AppTextStyles.body,
             ),
           ],
         ),
