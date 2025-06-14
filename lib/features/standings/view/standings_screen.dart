@@ -1,16 +1,18 @@
-import 'package:basketball_manager/features/standings/data/standings_repository.dart';
 import 'package:basketball_manager/domain/entities/team_standing.dart';
+import 'package:basketball_manager/features/standings/data/standings_repository.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:basketball_manager/core/app_constants.dart';
+import 'package:basketball_manager/locator.dart';
 
 class StandingsScreen extends StatelessWidget {
   const StandingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<TeamStanding> standings = const StandingsRepository().fetchStandings();
+    final List<TeamStanding> standings =
+        locator<StandingsRepository>().fetchStandings();
 
     return Scaffold(
       appBar: AppBar(
@@ -22,11 +24,13 @@ class StandingsScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         itemCount: standings.length,
-        separatorBuilder: (_, __) => Divider(color: AppColors.border, height: 1),
+        separatorBuilder: (_, __) =>
+            Divider(color: AppColors.border, height: 1),
         itemBuilder: (context, index) {
           final team = standings[index];
           return ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             leading: Text(
               '${index + 1}',
               style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w600),

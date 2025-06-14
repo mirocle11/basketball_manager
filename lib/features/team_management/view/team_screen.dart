@@ -5,13 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:basketball_manager/core/app_constants.dart';
 
 import 'package:basketball_manager/features/team_management/data/team_repository.dart';
+import 'package:basketball_manager/locator.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Player> roster = const PlayerRepository().fetchRoster();
+    final List<Player> roster = locator<PlayerRepository>().fetchRoster();
 
     return DefaultTabController(
       length: 4,
@@ -30,7 +31,8 @@ class TeamScreen extends StatelessWidget {
             isScrollable: true,
             indicatorColor: AppColors.primaryText,
             indicatorWeight: 3,
-            labelPadding: EdgeInsets.symmetric(horizontal: AppPaddings.gapLarge),
+            labelPadding:
+                EdgeInsets.symmetric(horizontal: AppPaddings.gapLarge),
             tabs: [
               Tab(text: 'Roster'),
               Tab(text: 'Tactics'),
@@ -64,10 +66,14 @@ class _RosterTab extends StatelessWidget {
       itemBuilder: (_, i) {
         final p = roster[i];
         return ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          title: Text(p.name, style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w500)),
-          subtitle: Text(p.position.name, style: AppTextStyles.bodySecondary.copyWith(fontSize: 13)),
-          trailing: Text('${p.rating}', style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w600)),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          title: Text(p.name,
+              style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w500)),
+          subtitle: Text(p.position.name,
+              style: AppTextStyles.bodySecondary.copyWith(fontSize: 13)),
+          trailing: Text('${p.rating}',
+              style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w600)),
           onTap: () {
             // context.push('/player/${p.id}');
           },
@@ -83,6 +89,6 @@ class _PlaceholderTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-    child: Text('$label (coming soon)', style: AppTextStyles.bodySecondary),
-  );
+        child: Text('$label (coming soon)', style: AppTextStyles.bodySecondary),
+      );
 }
