@@ -11,6 +11,7 @@ A cross-platform basketball team management application built with [Flutter](htt
 - **Finances** and **news/events** (currently stubbed)
 - Navigation powered by `go_router`
 - State management with `flutter_bloc`
+- Dependency injection via `get_it`
 
 ## Getting Started
 
