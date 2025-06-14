@@ -1,6 +1,7 @@
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:basketball_manager/core/app_constants.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
@@ -16,7 +17,7 @@ class GameScreen extends StatelessWidget {
         title: const Text('Game Day'),
       ),
       body: const Center(
-        child: Text('Game Day Screen - Coming Soon'),
+        child: Text('Game Day Screen - Coming Soon', style: AppTextStyles.body),
       ),
     );
   }

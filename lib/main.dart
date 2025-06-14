@@ -1,8 +1,9 @@
 import 'package:basketball_manager/features/league/view/league_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:basketball_manager/core/app_theme.dart';
 
-import 'routes/routes.dart';
+import 'package:basketball_manager/routes/routes.dart';
 import 'features/home/view/splash_screen.dart';
 import 'features/home/view/home_screen.dart';
 import 'features/team_management/view/team_screen.dart';
@@ -120,10 +121,7 @@ class BasketballManagerApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Basketball GM',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.grey.shade900,
-        primaryColor: Colors.grey.shade800,
-      ),
+      theme: AppTheme.darkTheme,
 
       // 3) Tell Flutter to use GoRouter
       routerConfig: router,

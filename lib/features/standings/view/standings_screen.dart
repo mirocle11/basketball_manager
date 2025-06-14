@@ -3,6 +3,7 @@ import 'package:basketball_manager/domain/entities/team_standing.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:basketball_manager/core/app_constants.dart';
 
 class StandingsScreen extends StatelessWidget {
   const StandingsScreen({super.key});
@@ -21,22 +22,22 @@ class StandingsScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         itemCount: standings.length,
-        separatorBuilder: (_, __) => Divider(color: Colors.grey.shade800, height: 1),
+        separatorBuilder: (_, __) => Divider(color: AppColors.border, height: 1),
         itemBuilder: (context, index) {
           final team = standings[index];
           return ListTile(
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             leading: Text(
               '${index + 1}',
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w600),
             ),
             title: Text(
               team.name,
-              style: const TextStyle(color: Colors.white),
+              style: AppTextStyles.body,
             ),
             trailing: Text(
               '${team.wins}-${team.losses}',
-              style: TextStyle(color: Colors.grey.shade400),
+              style: AppTextStyles.bodySecondary,
             ),
           );
         },
