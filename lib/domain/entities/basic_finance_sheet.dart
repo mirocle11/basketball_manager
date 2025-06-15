@@ -12,7 +12,7 @@ class BasicFinanceSheet {
   double get balance {
     double total = 0;
     for (final txn in transactions) {
-      total += txn.type == TransactionType.credit
+      total += txn.type == BasicTransactionType.credit
           ? txn.amount
           : -txn.amount;
     }
