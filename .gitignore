@@ -12,7 +12,7 @@ build/
 *.js_
 *.js.deps
 *.js.map
-*.g.dart
+# *.g.dart files are tracked for code generation outputs
 
 # IDE specific
 .idea/

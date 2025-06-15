@@ -1,39 +1,54 @@
-import 'player.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class Team {
-  Team({
+import '../value_objects/team_colors.dart';
+import '../value_objects/record.dart';
+
+part 'team.g.dart';
+
+@JsonSerializable(explicitToJson: true)
+class Team extends Equatable {
+  const Team({
     required this.id,
+    required this.leagueId,
     required this.name,
     required this.city,
-    required this.roster,
-    this.wins = 0,
-    this.losses = 0,
+    required this.colors,
+    required this.budget,
+    required this.payroll,
+    required this.prestige,
+    required this.record,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
-  final int id;
+  final String id;
+  final String leagueId;
   final String name;
   final String city;
-  final List<Player> roster;
-  int wins;
-  int losses;
+  final TeamColors colors;
+  final double budget;
+  final double payroll;
+  final int prestige;
+  final Record record;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
-  double get winPct =>
-      wins + losses == 0 ? 0 : wins / (wins + losses);
+  factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);
+  Map<String, dynamic> toJson() => _$TeamToJson(this);
 
-  Team copyWith({
-    String? name,
-    String? city,
-    List<Player>? roster,
-    int? wins,
-    int? losses,
-  }) {
-    return Team(
-      id: id,
-      name: name ?? this.name,
-      city: city ?? this.city,
-      roster: roster ?? this.roster,
-      wins: wins ?? this.wins,
-      losses: losses ?? this.losses,
-    );
-  }
+  @override
+  List<Object?> get props => [
+        id,
+        leagueId,
+        name,
+        city,
+        colors,
+        budget,
+        payroll,
+        prestige,
+        record,
+        createdAt,
+        updatedAt,
+      ];
 }
