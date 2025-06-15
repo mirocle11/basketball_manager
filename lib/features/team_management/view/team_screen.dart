@@ -2,34 +2,37 @@ import 'package:basketball_manager/domain/entities/player.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:basketball_manager/core/app_constants.dart';
 
 import 'package:basketball_manager/features/team_management/data/team_repository.dart';
+import 'package:basketball_manager/locator.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Player> roster = const PlayerRepository().fetchRoster();
+    final List<Player> roster = locator<PlayerRepository>().fetchRoster();
 
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: AppColors.scaffoldBackground,
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade900,
+          backgroundColor: AppColors.scaffoldBackground,
           elevation: 0,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () => context.go(Routes.home),
           ),
-          title: const Text('Team Management', style: TextStyle(fontWeight: FontWeight.w600)),
+          title: const Text('Team Management', style: AppTextStyles.h3),
           centerTitle: true,
           bottom: const TabBar(
             isScrollable: true,
-            indicatorColor: Colors.white,
+            indicatorColor: AppColors.primaryText,
             indicatorWeight: 3,
-            labelPadding: EdgeInsets.symmetric(horizontal: 24),
+            labelPadding:
+                EdgeInsets.symmetric(horizontal: AppPaddings.gapLarge),
             tabs: [
               Tab(text: 'Roster'),
               Tab(text: 'Tactics'),
@@ -59,14 +62,18 @@ class _RosterTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: roster.length,
-      separatorBuilder: (_, __) => Divider(color: Colors.grey.shade800, height: 1),
+      separatorBuilder: (_, __) => Divider(color: AppColors.border, height: 1),
       itemBuilder: (_, i) {
         final p = roster[i];
         return ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          title: Text(p.name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
-          subtitle: Text(p.position.name, style: TextStyle(color: Colors.grey.shade400, fontSize: 13)),
-          trailing: Text('${p.rating}', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          title: Text(p.name,
+              style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w500)),
+          subtitle: Text(p.position.name,
+              style: AppTextStyles.bodySecondary.copyWith(fontSize: 13)),
+          trailing: Text('${p.rating}',
+              style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w600)),
           onTap: () {
             // context.push('/player/${p.id}');
           },
@@ -82,6 +89,6 @@ class _PlaceholderTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-    child: Text('$label (coming soon)', style: TextStyle(color: Colors.grey.shade400)),
-  );
+        child: Text('$label (coming soon)', style: AppTextStyles.bodySecondary),
+      );
 }
