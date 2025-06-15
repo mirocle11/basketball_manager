@@ -1,39 +1,43 @@
-import 'finance_transaction.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class FinanceSheet {
-  FinanceSheet({
-    required this.id,
-    required this.transactions,
+import '../value_objects/income_breakdown.dart';
+import '../value_objects/expense_breakdown.dart';
+
+part 'finance_sheet.g.dart';
+
+@JsonSerializable(explicitToJson: true)
+class FinanceSheet extends Equatable {
+  const FinanceSheet({
+    required this.teamId,
+    required this.seasonYear,
+    required this.income,
+    required this.expenses,
+    required this.balance,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
-  final String id;
-  final List<FinanceTransaction> transactions;
+  final String teamId;
+  final int seasonYear;
+  final IncomeBreakdown income;
+  final ExpenseBreakdown expenses;
+  final double balance;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
-  double get balance {
-    double total = 0;
-    for (final txn in transactions) {
-      total += txn.type == TransactionType.credit
-          ? txn.amount
-          : -txn.amount;
-    }
-    return total;
-  }
+  factory FinanceSheet.fromJson(Map<String, dynamic> json) =>
+      _$FinanceSheetFromJson(json);
+  Map<String, dynamic> toJson() => _$FinanceSheetToJson(this);
 
-  void addTransaction(FinanceTransaction txn) {
-    transactions.add(txn);
-  }
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'transactions': transactions.map((t) => t.toJson()).toList(),
-  };
-
-  factory FinanceSheet.fromJson(Map<String, dynamic> json) {
-    return FinanceSheet(
-      id: json['id'],
-      transactions: (json['transactions'] as List)
-          .map((e) => FinanceTransaction.fromJson(e))
-          .toList(),
-    );
-  }
+  @override
+  List<Object?> get props => [
+        teamId,
+        seasonYear,
+        income,
+        expenses,
+        balance,
+        createdAt,
+        updatedAt,
+      ];
 }

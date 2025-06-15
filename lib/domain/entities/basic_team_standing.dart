@@ -1,5 +1,5 @@
-class TeamStanding {
-  const TeamStanding({
+class BasicTeamStanding {
+  const BasicTeamStanding({
     required this.name, required this.wins, required this.losses
   });
 
