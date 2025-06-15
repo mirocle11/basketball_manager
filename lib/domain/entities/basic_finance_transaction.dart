@@ -1,7 +1,7 @@
-enum TransactionType { credit, debit }
+enum BasicTransactionType { credit, debit }
 
-class FinanceTransaction {
-  const FinanceTransaction({
+class BasicFinanceTransaction {
+  const BasicFinanceTransaction({
     required this.id,
     required this.amount,
     required this.type,
@@ -11,18 +11,18 @@ class FinanceTransaction {
 
   final String id; // UUID or hash
   final double amount;
-  final TransactionType type;
+  final BasicTransactionType type;
   final String description;
   final DateTime timestamp;
 
-  FinanceTransaction copyWith({
+  BasicFinanceTransaction copyWith({
     String? id,
     double? amount,
-    TransactionType? type,
+    BasicTransactionType? type,
     String? description,
     DateTime? timestamp,
   }) {
-    return FinanceTransaction(
+    return BasicFinanceTransaction(
       id: id ?? this.id,
       amount: amount ?? this.amount,
       type: type ?? this.type,
@@ -39,11 +39,11 @@ class FinanceTransaction {
     'timestamp': timestamp.toIso8601String(),
   };
 
-  factory FinanceTransaction.fromJson(Map<String, dynamic> json) {
-    return FinanceTransaction(
+  factory BasicFinanceTransaction.fromJson(Map<String, dynamic> json) {
+    return BasicFinanceTransaction(
       id: json['id'],
       amount: json['amount'],
-      type: TransactionType.values.byName(json['type']),
+      type: BasicTransactionType.values.byName(json['type']),
       description: json['description'],
       timestamp: DateTime.parse(json['timestamp']),
     );

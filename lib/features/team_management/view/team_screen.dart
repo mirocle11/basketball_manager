@@ -1,4 +1,4 @@
-import 'package:basketball_manager/domain/entities/player.dart';
+import 'package:basketball_manager/domain/entities/basic_player.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +12,7 @@ class TeamScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Player> roster = locator<PlayerRepository>().fetchRoster();
+    final List<BasicPlayer> roster = locator<PlayerRepository>().fetchRoster();
 
     return DefaultTabController(
       length: 4,
@@ -56,7 +56,7 @@ class TeamScreen extends StatelessWidget {
 
 class _RosterTab extends StatelessWidget {
   const _RosterTab({required this.roster});
-  final List<Player> roster;
+  final List<BasicPlayer> roster;
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:basketball_manager/domain/entities/team.dart';
+import 'package:basketball_manager/domain/entities/basic_team.dart';
 import 'package:basketball_manager/features/league/data/league_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +10,7 @@ class LeagueScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Team> teams = locator<LeagueRepository>().fetchTeams();
+    final List<BasicTeam> teams = locator<LeagueRepository>().fetchTeams();
 
     return Scaffold(
       appBar: AppBar(
