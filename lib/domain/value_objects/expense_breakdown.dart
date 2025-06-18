@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:hive/hive.dart';
 
 part 'expense_breakdown.g.dart';
 
+@HiveType(typeId: 11)
 @JsonSerializable()
 class ExpenseBreakdown extends Equatable {
   const ExpenseBreakdown({
@@ -11,8 +13,11 @@ class ExpenseBreakdown extends Equatable {
     this.other = 0,
   });
 
+  @HiveField(0)
   final double salaries;
+  @HiveField(1)
   final double travel;
+  @HiveField(2)
   final double other;
 
   double get total => salaries + travel + other;
