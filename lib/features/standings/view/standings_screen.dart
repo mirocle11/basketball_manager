@@ -1,4 +1,4 @@
-import 'package:basketball_manager/domain/entities/team_standing.dart';
+import 'package:basketball_manager/domain/entities/basic_team_standing.dart';
 import 'package:basketball_manager/features/standings/data/standings_repository.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class StandingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<TeamStanding> standings =
+    final List<BasicTeamStanding> standings =
         locator<StandingsRepository>().fetchStandings();
 
     return Scaffold(
@@ -25,7 +25,7 @@ class StandingsScreen extends StatelessWidget {
       body: ListView.separated(
         itemCount: standings.length,
         separatorBuilder: (_, __) =>
-            Divider(color: AppColors.border, height: 1),
+            const Divider(color: AppColors.border, height: 1),
         itemBuilder: (context, index) {
           final team = standings[index];
           return ListTile(

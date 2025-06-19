@@ -1,39 +1,20 @@
+import 'package:basketball_manager/data/local/hive_league_datasource.dart';
 import 'package:basketball_manager/domain/entities/team.dart';
-import 'package:basketball_manager/domain/entities/player.dart';
+import 'package:basketball_manager/domain/entities/basic_team.dart';
 
 class LeagueRepository {
-  const LeagueRepository();
+  const LeagueRepository(this._ds);
 
-  List<Team> fetchTeams() => [
-    Team(
-      id: 1,
-      name: 'Sharks',
-      city: 'San Francisco',
-      roster: const [
-        Player(id: 101, name: 'Aiden King', position: Position.guard,   rating: 88),
-        Player(id: 102, name: 'Caleb Wright', position: Position.forward, rating: 80),
-        Player(id: 103, name: 'Wyatt Hill', position: Position.center,  rating: 83),
-      ],
-    ),
-    Team(
-      id: 2,
-      name: 'Wildcats',
-      city: 'Chicago',
-      roster: const [
-        Player(id: 201, name: 'Xavier Green', position: Position.guard,   rating: 90),
-        Player(id: 202, name: 'Nathan Young', position: Position.forward, rating: 85),
-        Player(id: 203, name: 'Ian Adams', position: Position.center,  rating: 82),
-      ],
-    ),
-    Team(
-      id: 3,
-      name: 'Eagles',
-      city: 'New York',
-      roster: const [
-        Player(id: 301, name: 'Victor Baker', position: Position.guard,   rating: 87),
-        Player(id: 302, name: 'Henry Collins', position: Position.forward, rating: 89),
-        Player(id: 303, name: 'Adam Perez', position: Position.center,  rating: 84),
-      ],
-    ),
-  ];
+  final HiveLeagueDataSource _ds;
+
+  Future<void> init() => _ds.init();
+
+  Future<void> saveTeam(Team team) => _ds.saveTeam(team);
+
+  Team? getTeam(String id) => _ds.getTeam(id);
+
+  Stream<List<Team>> watchTeams() => _ds.watchTeams();
+
+  // Temporary stub for existing UI
+  List<BasicTeam> fetchTeams() => const [];
 }
