@@ -14,7 +14,7 @@ class RosterCubit extends Cubit<RosterState> {
       await Future.delayed(const Duration(milliseconds: 500));
 
       final roster = _repo.fetchRoster();
-      emit(RosterLoaded(roster));
+      emit(RosterLoaded(roster.cast<Player>()));
     } catch (e) {
       emit(RosterError('Failed to load roster'));
     }
