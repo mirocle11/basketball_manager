@@ -3,21 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:basketball_manager/core/app_theme.dart';
 import 'package:basketball_manager/locator.dart';
-import 'data/local/hive_database.dart';
-import 'data/local/hive_league_datasource.dart';
+import 'features/intro/intro_story_screen.dart';
+import 'features/splash/splash_screen.dart';
 
 import 'package:basketball_manager/routes/routes.dart';
-import 'features/home/view/splash_screen.dart';
 import 'features/home/view/home_screen.dart';
 import 'features/team_management/view/team_screen.dart';
 import 'features/standings/view/standings_screen.dart';
 import 'features/game_day/view/game_screen.dart';
+import 'features/team_creator/team_creator_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await HiveDatabase.init();
   setupLocator();
-  await locator<HiveLeagueDataSource>().init();
   runApp(const BasketballManagerApp());
 }
 
@@ -35,6 +33,20 @@ class BasketballManagerApp extends StatelessWidget {
           name: 'splash',
           path: Routes.splash,
           builder: (context, state) => const SplashScreen(),
+        ),
+
+        /// ── Intro Story
+        GoRoute(
+          name: 'intro',
+          path: Routes.intro,
+          builder: (context, state) => const IntroStoryScreen(),
+        ),
+
+        /// ── Team Creator (stub)
+        GoRoute(
+          name: 'team_creator',
+          path: Routes.teamCreator,
+          builder: (context, state) => const TeamCreatorScreen(),
         ),
 
         /// ── Home
