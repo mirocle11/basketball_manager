@@ -25,7 +25,7 @@ class StandingsScreen extends StatelessWidget {
       body: ListView.separated(
         itemCount: standings.length,
         separatorBuilder: (_, __) =>
-            Divider(color: AppColors.border, height: 1),
+            const Divider(color: AppColors.border, height: 1),
         itemBuilder: (context, index) {
           final team = standings[index];
           return ListTile(

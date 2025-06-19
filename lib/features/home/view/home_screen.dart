@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                       style: AppTextStyles.hRecord,
                     ),
                     const SizedBox(height: AppPaddings.gapSmall),
-                    Text(
+                    const Text(
                       'Season Record',
                       style: AppTextStyles.bodySecondary,
                     ),
@@ -230,7 +230,6 @@ class _ActionButton extends StatelessWidget {
   final VoidCallback onTap;
 
   const _ActionButton({
-    super.key,
     required this.label,
     required this.icon,
     required this.onTap,

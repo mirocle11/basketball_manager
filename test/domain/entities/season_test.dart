@@ -4,12 +4,12 @@ import 'package:basketball_manager/domain/value_objects/team_standing.dart';
 
 void main() {
   test('Season toJson/fromJson', () {
-    final standing = TeamStanding(teamId: 't1', wins: 10, losses: 5);
+    const standing = TeamStanding(teamId: 't1', wins: 10, losses: 5);
     final season = Season(
       year: 2024,
       leagueId: '1',
       schedule: const ['g1', 'g2'],
-      standings: [standing],
+      standings: const [standing],
       createdAt: DateTime.utc(2024, 1, 1),
       updatedAt: DateTime.utc(2024, 1, 2),
     );

@@ -23,12 +23,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
         child: Stack(
           children: [
-            const Center(
+            Center(
               child: Text(
                 'Basketball GM',
                 style: AppTextStyles.h1,

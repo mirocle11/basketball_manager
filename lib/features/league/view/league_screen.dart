@@ -23,7 +23,7 @@ class LeagueScreen extends StatelessWidget {
       body: ListView.separated(
         itemCount: teams.length,
         separatorBuilder: (_, __) =>
-            Divider(color: AppColors.border, height: 1),
+            const Divider(color: AppColors.border, height: 1),
         itemBuilder: (_, index) {
           final team = teams[index];
           return ExpansionTile(
