@@ -62,7 +62,7 @@ class _RosterTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: roster.length,
-      separatorBuilder: (_, __) => Divider(color: AppColors.border, height: 1),
+      separatorBuilder: (_, __) => const Divider(color: AppColors.border, height: 1),
       itemBuilder: (_, i) {
         final p = roster[i];
         return ListTile(
