@@ -25,8 +25,14 @@ class RemoteLeagueApiService {
     final jsonMap = await _loadData();
     final schedule = jsonMap['schedule'] as List<dynamic>;
     return schedule
-        .map((e) => GameDto.fromJson(e as Map<String, dynamic>)
-            .toDomain(seasonYear))
+        .map((e) =>
+            GameDto.fromJson(e as Map<String, dynamic>).toDomain(seasonYear))
         .toList();
+  }
+
+  /// Preloads mock assets to simulate network seeding.
+  Future<void> seed() async {
+    await _loadData();
+    await Future<void>.delayed(const Duration(milliseconds: 300));
   }
 }
