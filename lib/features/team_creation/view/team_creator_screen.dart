@@ -67,11 +67,14 @@ class _TeamCreatorScreenState extends State<TeamCreatorScreen> {
   }
 
   bool get _formValid {
-    return (_formKey.currentState?.validate() ?? false) && _logoPath != null;
+    return _nameCtrl.text.trim().isNotEmpty &&
+        _cityCtrl.text.trim().isNotEmpty &&
+        _logoPath != null;
   }
 
   void _submit() {
-    if (!_formValid) return;
+    final valid = _formKey.currentState?.validate() ?? false;
+    if (!valid || _logoPath == null) return;
     context.read<TeamCreationCubit>().createTeam(
           name: _nameCtrl.text.trim(),
           city: _cityCtrl.text.trim(),
