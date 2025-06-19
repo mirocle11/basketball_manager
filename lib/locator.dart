@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 
 import 'features/league/data/league_repository.dart';
 import 'features/team_management/data/team_repository.dart';
+import 'features/team_creation/data/team_repository.dart' as creation;
 import 'features/standings/data/standings_repository.dart';
 import 'data/local/hive_league_datasource.dart';
 
@@ -13,6 +14,8 @@ void setupLocator() {
     ..registerLazySingleton<LeagueRepository>(
         () => LeagueRepository(locator<HiveLeagueDataSource>()))
     ..registerLazySingleton<PlayerRepository>(() => const PlayerRepository())
+    ..registerLazySingleton<creation.TeamRepository>(
+        () => creation.TeamRepository(locator<HiveLeagueDataSource>()))
     ..registerLazySingleton<StandingsRepository>(
         () => const StandingsRepository());
 }
