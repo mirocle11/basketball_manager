@@ -1,0 +1,13 @@
+{
+  "league": {
+    "id": "league_1",
+    "name": "VBA",
+    "rules": { "salaryCap": 1000000, "rosterSize": 12 }
+  },
+  "season": 2025,
+  "schedule": [
+    { "id": "g1", "date": "2025-10-01", "home": "team_a", "away": "team_b" },
+    { "id": "g2", "date": "2025-10-03", "home": "team_c", "away": "team_d" },
+    { "id": "g3", "date": "2025-10-05", "home": "team_e", "away": "team_f" }
+  ]
+}
