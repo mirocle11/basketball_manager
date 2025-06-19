@@ -39,12 +39,16 @@ class _IntroStoryScreenState extends State<IntroStoryScreen> {
                   padding: const EdgeInsets.all(32),
                   child: DefaultTextStyle(
                     style: AppTextStyles.body,
-                    child: TyperAnimatedTextKit(
-                      text: [_paragraphs[index]],
-                      speed: const Duration(milliseconds: 40),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          _paragraphs[index],
+                          speed: const Duration(milliseconds: 40),
+                        ),
+                      ],
                       isRepeatingAnimation: false,
                       displayFullTextOnTap: true,
-                      stopPauseOnTap: true,
+                      pause: Duration.zero,
                     ),
                   ),
                 ),

@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _init() async {
     await HiveDatabase.init();
     await RemoteLeagueApiService().seed();
-    if (mounted) context.go('/intro');
+    if (mounted) context.go(Routes.intro);
   }
 
   @override
@@ -56,10 +56,10 @@ class _Logo extends StatelessWidget {
     return Center(
       child: Hero(
         tag: 'logo',
-        child: Text('Basketball GM', style: AppTextStyles.h1)
+        child: const Text('Basketball GM', style: AppTextStyles.h1)
             .animate()
             .fadeIn(duration: 400.ms)
-            .scale(begin: 0.8, end: 1),
+            .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1)),
       ),
     );
   }
