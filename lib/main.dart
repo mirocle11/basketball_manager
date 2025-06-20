@@ -11,7 +11,7 @@ import 'features/home/view/home_screen.dart';
 import 'features/team_management/view/team_screen.dart';
 import 'features/standings/view/standings_screen.dart';
 import 'features/game_day/view/game_screen.dart';
-import 'features/team_creation/view/team_creator_screen.dart';
+import 'features/team_selection/view/team_selection_hub.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,11 +42,11 @@ class BasketballManagerApp extends StatelessWidget {
           builder: (context, state) => const IntroCutSceneScreen(),
         ),
 
-        /// ── Team Creator
+        /// ── Team Select
         GoRoute(
-          name: 'team_creator',
-          path: Routes.teamCreator,
-          builder: (context, state) => const TeamCreatorScreen(),
+          name: 'team_select',
+          path: Routes.teamSelect,
+          builder: (context, state) => const TeamSelectionHub(),
         ),
 
         /// ── Home
