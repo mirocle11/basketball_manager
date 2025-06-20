@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import '../features/team_creation/view/team_creator_screen.dart';
+import '../features/team_selection/view/team_selection_hub.dart';
 
 class Routes {
   static const String splash = '/';
@@ -12,14 +12,14 @@ class Routes {
   static const String finances = '/finances';
   static const String news = '/news';
   static const String settings = '/settings';
-  static const String teamCreator = '/team-creator';
+  static const String teamSelect = '/team-select';
 }
 
 // App-specific GoRouter configuration
 
 final additionalRoutes = <GoRoute>[
   GoRoute(
-    path: Routes.teamCreator,
-    builder: (_, __) => const TeamCreatorScreen(),
+    path: Routes.teamSelect,
+    builder: (_, __) => const TeamSelectionHub(),
   ),
 ];
