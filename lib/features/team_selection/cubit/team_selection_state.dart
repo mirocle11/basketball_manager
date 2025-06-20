@@ -24,5 +24,5 @@ class TeamSelectionState {
 }
 
 class TeamChosen extends TeamSelectionState {
-  const TeamChosen(List<Team> teams, String id) : super(teams, selectedId: id);
+  const TeamChosen(super.teams, String id) : super(selectedId: id);
 }

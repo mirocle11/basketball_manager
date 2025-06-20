@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 part 'team_selection_state.dart';
 
 class TeamSelectionCubit extends Cubit<TeamSelectionState> {
-  TeamSelectionCubit() : super(TeamSelectionState(_teams));
+  TeamSelectionCubit() : super(const TeamSelectionState(_teams));
 
   static const _prefsBox = 'prefs';
   static const _chosenKey = 'chosenTeamId';
