@@ -15,31 +15,45 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final ValueNotifier<double> _progress = ValueNotifier(0);
+
   @override
   void initState() {
     super.initState();
     _init();
   }
 
+  @override
+  void dispose() {
+    _progress.dispose();
+    super.dispose();
+  }
+
   Future<void> _init() async {
     await HiveDatabase.init();
-    await RemoteLeagueApiService().seed();
+    _progress.value = 0.5;
+    await RemoteLeagueApiService().seedIfEmpty();
+    _progress.value = 1.0;
     if (mounted) context.go(Routes.intro);
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       body: SafeArea(
         child: Stack(
           children: [
-            _Logo(),
+            const _Logo(),
             Positioned(
               left: 0,
               right: 0,
               bottom: AppPaddings.gapLarge,
-              child: LinearProgressIndicator(),
+              child: ValueListenableBuilder<double>(
+                valueListenable: _progress,
+                builder: (_, value, __) =>
+                    LinearProgressIndicator(value: value),
+              ),
             ),
           ],
         ),
@@ -56,7 +70,11 @@ class _Logo extends StatelessWidget {
     return Center(
       child: Hero(
         tag: 'logo',
-        child: const Text('Basketball GM', style: AppTextStyles.h1)
+        child: Image.asset(
+          'assets/images/logo.png',
+          height: 120,
+          errorBuilder: (_, __, ___) => const SizedBox(height: 120),
+        )
             .animate()
             .fadeIn(duration: 400.ms)
             .scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1)),

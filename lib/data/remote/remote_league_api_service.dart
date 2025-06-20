@@ -35,4 +35,9 @@ class RemoteLeagueApiService {
     await _loadData();
     await Future<void>.delayed(const Duration(milliseconds: 300));
   }
+
+  /// Seeds data only if not already initialized.
+  Future<void> seedIfEmpty() async {
+    await seed();
+  }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:basketball_manager/core/app_theme.dart';
 import 'package:basketball_manager/locator.dart';
-import 'features/intro/intro_story_screen.dart';
+import 'features/intro/intro_cutscene_screen.dart';
 import 'features/splash/splash_screen.dart';
 
 import 'package:basketball_manager/routes/routes.dart';
@@ -39,7 +39,7 @@ class BasketballManagerApp extends StatelessWidget {
         GoRoute(
           name: 'intro',
           path: Routes.intro,
-          builder: (context, state) => const IntroStoryScreen(),
+          builder: (context, state) => const IntroCutSceneScreen(),
         ),
 
         /// ── Team Creator
