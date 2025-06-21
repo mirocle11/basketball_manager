@@ -72,6 +72,10 @@ flutter:
 
   assets:
     - assets/mock/season1.json
+    - assets/images/logo.png
+    - assets/logos/HBS.png
+    - assets/logos/NEO.png
+    - assets/logos/SEA.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
