@@ -19,6 +19,11 @@ class Team extends Equatable {
     required this.budget,
     required this.payroll,
     required this.prestige,
+    required this.difficulty,
+    required this.pros,
+    required this.cons,
+    required this.conferenceId,
+    required this.divisionId,
     required this.record,
     required this.createdAt,
     required this.updatedAt,
@@ -41,10 +46,20 @@ class Team extends Equatable {
   @HiveField(7)
   final int prestige;
   @HiveField(8)
-  final Record record;
+  final int difficulty;
   @HiveField(9)
-  final DateTime createdAt;
+  final List<String> pros;
   @HiveField(10)
+  final List<String> cons;
+  @HiveField(11)
+  final String conferenceId;
+  @HiveField(12)
+  final String divisionId;
+  @HiveField(13)
+  final Record record;
+  @HiveField(14)
+  final DateTime createdAt;
+  @HiveField(15)
   final DateTime updatedAt;
 
   factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);
@@ -60,6 +75,11 @@ class Team extends Equatable {
         budget,
         payroll,
         prestige,
+        difficulty,
+        pros,
+        cons,
+        conferenceId,
+        divisionId,
         record,
         createdAt,
         updatedAt,

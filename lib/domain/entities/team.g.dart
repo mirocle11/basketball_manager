@@ -25,16 +25,21 @@ class TeamAdapter extends TypeAdapter<Team> {
       budget: fields[5] as double,
       payroll: fields[6] as double,
       prestige: fields[7] as int,
-      record: fields[8] as Record,
-      createdAt: fields[9] as DateTime,
-      updatedAt: fields[10] as DateTime,
+      difficulty: fields[8] as int,
+      pros: (fields[9] as List).cast<String>(),
+      cons: (fields[10] as List).cast<String>(),
+      conferenceId: fields[11] as String,
+      divisionId: fields[12] as String,
+      record: fields[13] as Record,
+      createdAt: fields[14] as DateTime,
+      updatedAt: fields[15] as DateTime,
     );
   }
 
   @override
   void write(BinaryWriter writer, Team obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(16)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -52,10 +57,20 @@ class TeamAdapter extends TypeAdapter<Team> {
       ..writeByte(7)
       ..write(obj.prestige)
       ..writeByte(8)
-      ..write(obj.record)
+      ..write(obj.difficulty)
       ..writeByte(9)
-      ..write(obj.createdAt)
+      ..write(obj.pros)
       ..writeByte(10)
+      ..write(obj.cons)
+      ..writeByte(11)
+      ..write(obj.conferenceId)
+      ..writeByte(12)
+      ..write(obj.divisionId)
+      ..writeByte(13)
+      ..write(obj.record)
+      ..writeByte(14)
+      ..write(obj.createdAt)
+      ..writeByte(15)
       ..write(obj.updatedAt);
   }
 
@@ -83,6 +98,11 @@ Team _$TeamFromJson(Map<String, dynamic> json) => Team(
       budget: (json['budget'] as num).toDouble(),
       payroll: (json['payroll'] as num).toDouble(),
       prestige: (json['prestige'] as num).toInt(),
+      difficulty: (json['difficulty'] as num).toInt(),
+      pros: (json['pros'] as List<dynamic>).map((e) => e as String).toList(),
+      cons: (json['cons'] as List<dynamic>).map((e) => e as String).toList(),
+      conferenceId: json['conferenceId'] as String,
+      divisionId: json['divisionId'] as String,
       record: Record.fromJson(json['record'] as Map<String, dynamic>),
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
@@ -97,6 +117,11 @@ Map<String, dynamic> _$TeamToJson(Team instance) => <String, dynamic>{
       'budget': instance.budget,
       'payroll': instance.payroll,
       'prestige': instance.prestige,
+      'difficulty': instance.difficulty,
+      'pros': instance.pros,
+      'cons': instance.cons,
+      'conferenceId': instance.conferenceId,
+      'divisionId': instance.divisionId,
       'record': instance.record.toJson(),
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt.toIso8601String(),
