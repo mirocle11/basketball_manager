@@ -3,6 +3,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../domain/entities/league.dart';
 import '../../domain/entities/season.dart';
 import '../../domain/entities/team.dart';
+import '../../domain/entities/conference.dart';
+import '../../domain/entities/division.dart';
 import '../../domain/entities/player.dart';
 import '../../domain/entities/game.dart';
 import '../../domain/entities/transaction.dart';
@@ -40,6 +42,12 @@ class HiveDatabase {
     }
     if (!Hive.isAdapterRegistered(2)) {
       Hive.registerAdapter(TeamAdapter());
+    }
+    if (!Hive.isAdapterRegistered(23)) {
+      Hive.registerAdapter(ConferenceAdapter());
+    }
+    if (!Hive.isAdapterRegistered(24)) {
+      Hive.registerAdapter(DivisionAdapter());
     }
     if (!Hive.isAdapterRegistered(3)) {
       Hive.registerAdapter(PlayerAdapter());
