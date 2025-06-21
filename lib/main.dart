@@ -7,8 +7,8 @@ import 'dart:async';
 import 'routes/app_router.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  runZonedGuarded(() {
+  await runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
     setupLocator();
     runApp(BasketballManagerApp());
   }, (error, stack) {
