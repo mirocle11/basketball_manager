@@ -1,5 +1,4 @@
-import 'package:go_router/go_router.dart';
-import '../features/team_selection/view/team_selection_hub.dart';
+// Route name constants for the application.
 
 class Routes {
   static const String splash = '/';
@@ -15,11 +14,3 @@ class Routes {
   static const String teamSelect = '/team-select';
 }
 
-// App-specific GoRouter configuration
-
-final additionalRoutes = <GoRoute>[
-  GoRoute(
-    path: Routes.teamSelect,
-    builder: (_, __) => const TeamSelectionHub(),
-  ),
-];
