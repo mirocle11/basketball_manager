@@ -6,6 +6,7 @@ import 'package:basketball_manager/core/app_constants.dart';
 
 import 'package:basketball_manager/features/team_management/data/team_repository.dart';
 import 'package:basketball_manager/locator.dart';
+import 'package:basketball_manager/widgets/nav_scaffold.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({super.key});
@@ -16,8 +17,8 @@ class TeamScreen extends StatelessWidget {
 
     return DefaultTabController(
       length: 4,
-      child: Scaffold(
-        backgroundColor: AppColors.scaffoldBackground,
+      child: NavScaffold(
+        currentIndex: 1,
         appBar: AppBar(
           backgroundColor: AppColors.scaffoldBackground,
           elevation: 0,
@@ -62,7 +63,8 @@ class _RosterTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: roster.length,
-      separatorBuilder: (_, __) => const Divider(color: AppColors.border, height: 1),
+      separatorBuilder: (_, __) =>
+          const Divider(color: AppColors.border, height: 1),
       itemBuilder: (_, i) {
         final p = roster[i];
         return ListTile(

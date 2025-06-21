@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:basketball_manager/core/app_constants.dart';
 import 'package:basketball_manager/locator.dart';
+import 'package:basketball_manager/widgets/nav_scaffold.dart';
 
 class StandingsScreen extends StatelessWidget {
   const StandingsScreen({super.key});
@@ -14,7 +15,8 @@ class StandingsScreen extends StatelessWidget {
     final List<BasicTeamStanding> standings =
         locator<StandingsRepository>().fetchStandings();
 
-    return Scaffold(
+    return NavScaffold(
+      currentIndex: 2,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
