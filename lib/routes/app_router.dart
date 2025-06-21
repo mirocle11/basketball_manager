@@ -5,6 +5,7 @@ import '../features/splash/splash_screen.dart';
 import '../features/intro/intro_cutscene_screen.dart';
 import '../features/team_selection/view/team_selection_hub.dart';
 import '../features/home/home_page.dart';
+import '../features/gm_creation/view/gm_creation_screen.dart';
 import '../features/team_management/view/team_screen.dart';
 import '../features/standings/view/standings_screen.dart';
 import '../features/game_day/view/game_screen.dart';
@@ -37,10 +38,24 @@ GoRouter buildRouter() {
         builder: (_, __) => const TeamSelectionHub(),
       ),
 
+      /// ── GM Create
+      GoRoute(
+        name: 'gm_create',
+        path: Routes.gmCreate,
+        builder: (_, __) => const GmCreationScreen(),
+      ),
+
       /// ── Home
       GoRoute(
         name: 'home',
         path: Routes.home,
+        builder: (_, __) => const HomePage(),
+      ),
+
+      /// ── Dashboard (alias of Home)
+      GoRoute(
+        name: 'dashboard',
+        path: Routes.dashboard,
         builder: (_, __) => const HomePage(),
       ),
 

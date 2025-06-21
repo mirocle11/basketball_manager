@@ -12,5 +12,6 @@ class Routes {
   static const String news = '/news';
   static const String settings = '/settings';
   static const String teamSelect = '/team-select';
+  static const String gmCreate = '/gm-create';
+  static const String dashboard = '/dashboard';
 }
-
