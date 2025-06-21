@@ -17,8 +17,8 @@ class _IntroCutSceneScreenState extends State<IntroCutSceneScreen>
     'Welcome, future front-office mastermind! Your journey begins now.',
     'I’m Darius ‘DJ’ Whitaker, commissioner of the league you’re about to shake up.',
     'Ten proud franchises—five in the East, five in the West—are stuck in neutral and need fresh leadership.',
-    'Review their dossiers, choose your challenge that excites you, and take the reigns.'
-        'Each team has its own strengths and weaknesses, so choose wisely.',
+    'Review their dossiers, choose your challenge that excites you, and take the reigns.',
+    'Each team has its own strengths and weaknesses, so choose wisely.',
     'Good luck… the Whitaker Cup is waiting.'
   ];
   bool _showButton = false;
@@ -38,20 +38,18 @@ class _IntroCutSceneScreenState extends State<IntroCutSceneScreen>
         child: Stack(
           children: [
             Center(
-              child: Hero(
-                tag: 'logo',
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  height: 120,
-                  errorBuilder: (_, __, ___) => const SizedBox(height: 120),
-                ),
-              ),
-            ),
-            Positioned.fill(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 144),
+                  Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: 120,
+                      errorBuilder: (_, __, ___) => const SizedBox(height: 120),
+                    ),
+                  ),
+                  const SizedBox(height: AppPaddings.gapLarge),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: disableAnims || _showButton
@@ -60,9 +58,11 @@ class _IntroCutSceneScreenState extends State<IntroCutSceneScreen>
                                 .map((p) => Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 24),
-                                      child: Text(p,
-                                          textAlign: TextAlign.center,
-                                          style: AppTextStyles.body),
+                                      child: Text(
+                                        p,
+                                        textAlign: TextAlign.center,
+                                        style: AppTextStyles.body,
+                                      ),
                                     ))
                                 .toList(),
                           )
