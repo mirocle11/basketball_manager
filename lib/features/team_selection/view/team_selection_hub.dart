@@ -25,36 +25,38 @@ class TeamSelectionHub extends StatelessWidget {
               appBar: AppBar(
                 title: const Text('Choose Your Franchise'),
               ),
-              body: Stack(
+              body: Column(
                 children: [
-                  GridView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: state.teams.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: width > 600 ? 3 : 2,
-                      childAspectRatio: 0.75,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
+                  Expanded(
+                    child: GridView.builder(
+                      padding: const EdgeInsets.all(16),
+                      itemCount: state.teams.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: width > 600 ? 3 : 2,
+                        childAspectRatio: 0.75,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                      ),
+                      itemBuilder: (_, i) {
+                        final team = state.teams[i];
+                        return TeamCard(
+                          team: team,
+                          selected: team.id == state.selectedId,
+                          onTap: () =>
+                              context.read<TeamSelectionCubit>().select(team.id),
+                        );
+                      },
                     ),
-                    itemBuilder: (_, i) {
-                      final team = state.teams[i];
-                      return TeamCard(
-                        team: team,
-                        selected: team.id == state.selectedId,
-                        onTap: () =>
-                            context.read<TeamSelectionCubit>().select(team.id),
-                      );
-                    },
                   ),
-                  Positioned(
-                    left: 16,
-                    right: 16,
-                    bottom: 16,
-                    child: FilledButton(
-                      onPressed: state.selectedId == null
-                          ? null
-                          : () => context.read<TeamSelectionCubit>().confirm(),
-                      child: const Text('Confirm'),
+                  SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: FilledButton(
+                        onPressed: state.selectedId == null
+                            ? null
+                            : () => context.read<TeamSelectionCubit>().confirm(),
+                        child: const Text('Confirm'),
+                      ),
                     ),
                   ),
                 ],
