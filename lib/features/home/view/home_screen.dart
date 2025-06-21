@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:basketball_manager/routes/routes.dart';
 import 'package:basketball_manager/core/app_constants.dart';
+import 'package:basketball_manager/widgets/nav_scaffold.dart';
 
 /// If you already have a TeamBloc or other providers, wrap HomeScreen
 /// with BlocProviders up in main.dart. For now, this is just the UI.
@@ -14,8 +15,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.scaffoldBackground,
+    return NavScaffold(
+      currentIndex: 0,
       body: SafeArea(
         child: Column(
           children: [
@@ -169,55 +170,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-
-      /// ── Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.scaffoldBackground,
-        currentIndex: 0, // Home is index 0
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Team',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.emoji_events),
-            label: 'Standings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: 'Finances',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
-        onTap: (idx) {
-          switch (idx) {
-            case 0:
-              // Already on Home; do nothing or maybe scroll to top
-              break;
-            case 1:
-              context.go(Routes.team);
-              break;
-            case 2:
-              context.go(Routes.standings);
-              break;
-            case 3:
-              context.go(Routes.finances);
-              break;
-            case 4:
-              context.go(Routes.settings);
-              break;
-          }
-        },
       ),
     );
   }

@@ -10,6 +10,8 @@ import '../features/team_management/view/team_screen.dart';
 import '../features/standings/view/standings_screen.dart';
 import '../features/game_day/view/game_screen.dart';
 import '../features/league/view/league_screen.dart';
+import '../features/finances/view/finances_screen.dart';
+import '../features/settings/view/settings_screen.dart';
 import 'routes.dart';
 
 /// Builds the application [GoRouter].
@@ -87,18 +89,11 @@ GoRouter buildRouter() {
         builder: (_, __) => const LeagueScreen(),
       ),
 
-      /// ── Finances (stub or real)
+      /// ── Finances
       GoRoute(
         name: 'finances',
         path: Routes.finances,
-        builder: (_, __) => const Scaffold(
-          body: Center(
-            child: Text(
-              'Finances Screen (stub)',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
+        builder: (_, __) => const FinancesScreen(),
       ),
 
       /// ── News/Events (stub or real)
@@ -115,18 +110,11 @@ GoRouter buildRouter() {
         ),
       ),
 
-      /// ── Settings (stub or real)
+      /// ── Settings
       GoRoute(
         name: 'settings',
         path: Routes.settings,
-        builder: (_, __) => const Scaffold(
-          body: Center(
-            child: Text(
-              'Settings Screen (stub)',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
+        builder: (_, __) => const SettingsScreen(),
       ),
     ],
     errorBuilder: (_, __) => const Scaffold(
