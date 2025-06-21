@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/app_constants.dart';
 import '../../../locator.dart';
 import '../cubit/gm_creation_cubit.dart';
 import '../data/gm_profile_repository.dart';
@@ -47,6 +48,7 @@ class _GmCreationScreenState extends State<GmCreationScreen> {
                       TextFormField(
                         controller: _nameCtrl,
                         decoration: const InputDecoration(labelText: 'GM Name'),
+                        cursorColor: AppColors.accent,
                         onChanged: context.read<GmCreationCubit>().setName,
                         validator: (v) {
                           if (v == null || v.trim().isEmpty) {
@@ -66,6 +68,7 @@ class _GmCreationScreenState extends State<GmCreationScreen> {
                       SwitchListTile(
                         title: const Text('Tutorial'),
                         value: state.tutorialOn,
+                        activeColor: AppColors.accent,
                         onChanged:
                             context.read<GmCreationCubit>().toggleTutorial,
                       ),
