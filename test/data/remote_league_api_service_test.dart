@@ -6,13 +6,14 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final service = RemoteLeagueApiService();
 
-  test('fetchLeague returns name "VBA"', () async {
-    final league = await service.fetchLeague();
-    expect(league.name, 'VBA');
+  test('loadSeed returns 30 teams', () async {
+    final teams = await service.fetchTeams();
+    expect(teams.length, 30);
   });
 
-  test('fetchSchedule length is 3', () async {
-    final games = await service.fetchSchedule(2025);
-    expect(games.length, 3);
+  test('selectable team count is 10', () async {
+    final teams = await service.fetchTeams();
+    final selectable = teams.where((t) => t.selectable).length;
+    expect(selectable, 10);
   });
 }

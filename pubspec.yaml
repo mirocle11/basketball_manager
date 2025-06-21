@@ -72,6 +72,7 @@ flutter:
 
   assets:
     - assets/mock/season1.json
+    - assets/mock/league_seed.json
     - assets/images/logo.png
     - assets/logos/HBS.png
     - assets/logos/NEO.png

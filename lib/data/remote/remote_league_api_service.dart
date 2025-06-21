@@ -2,37 +2,42 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
 
-import '../../domain/entities/game.dart';
-import '../../domain/entities/league.dart';
+import '../../domain/entities/conference.dart';
+import '../../domain/entities/division.dart';
 
-import 'dto/game_dto.dart';
-import 'dto/league_dto.dart';
+import 'dto/league_seed_dto.dart';
+import 'dto/team_dto.dart';
 
 class RemoteLeagueApiService {
-  Future<Map<String, dynamic>> _loadData() async {
-    final data = await rootBundle.loadString('assets/mock/season1.json');
-    return json.decode(data) as Map<String, dynamic>;
+  Future<LeagueSeedDto> _loadSeed() async {
+    final data = await rootBundle.loadString('assets/mock/league_seed.json');
+    final jsonMap = json.decode(data) as Map<String, dynamic>;
+    return LeagueSeedDto.fromJson(jsonMap);
   }
 
-  Future<League> fetchLeague() async {
-    final jsonMap = await _loadData();
-    final leagueJson = jsonMap['league'] as Map<String, dynamic>;
-    final dto = LeagueDto.fromJson(leagueJson);
-    return dto.toDomain();
+  Future<List<Conference>> fetchConferences() async {
+    final seed = await _loadSeed();
+    return seed.conferences.map((e) => e.toDomain()).toList();
   }
 
-  Future<List<Game>> fetchSchedule(int seasonYear) async {
-    final jsonMap = await _loadData();
-    final schedule = jsonMap['schedule'] as List<dynamic>;
-    return schedule
-        .map((e) =>
-            GameDto.fromJson(e as Map<String, dynamic>).toDomain(seasonYear))
-        .toList();
+  Future<List<Division>> fetchDivisions() async {
+    final seed = await _loadSeed();
+    return seed.divisions.map((e) => e.toDomain()).toList();
+  }
+
+  Future<List<TeamDto>> fetchTeams() async {
+    final seed = await _loadSeed();
+    return seed.teams;
+  }
+
+  Future<Map<String, dynamic>> fetchRules() async {
+    final seed = await _loadSeed();
+    return seed.rules;
   }
 
   /// Preloads mock assets to simulate network seeding.
   Future<void> seed() async {
-    await _loadData();
+    await _loadSeed();
     await Future<void>.delayed(const Duration(milliseconds: 300));
   }
 

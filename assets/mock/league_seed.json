@@ -1,0 +1,58 @@
+{
+  "conferences": [
+    { "id": "east", "name": "East" },
+    { "id": "west", "name": "West" }
+  ],
+  "divisions": [
+    { "id": "atlantic", "name": "Atlantic", "conferenceId": "east" },
+    { "id": "central", "name": "Central", "conferenceId": "east" },
+    { "id": "southeast", "name": "Southeast", "conferenceId": "east" },
+    { "id": "northwest", "name": "Northwest", "conferenceId": "west" },
+    { "id": "pacific", "name": "Pacific", "conferenceId": "west" },
+    { "id": "southwest", "name": "Southwest", "conferenceId": "west" }
+  ],
+  "teams": [
+    { "id": "HBS", "city": "Harbor Bay", "nickname": "Sharks", "conferenceId": "east", "divisionId": "atlantic", "colors": { "primary": "Navy", "secondary": "Aqua" }, "selectable": true },
+    { "id": "NEO", "city": "Neon City", "nickname": "Voltage", "conferenceId": "east", "divisionId": "atlantic", "colors": { "primary": "Lime", "secondary": "Black" }, "selectable": true },
+    { "id": "SEA", "city": "Seabright", "nickname": "Albatross", "conferenceId": "east", "divisionId": "atlantic", "colors": { "primary": "Royal", "secondary": "Silver" }, "selectable": false },
+    { "id": "BAY", "city": "Bayview", "nickname": "Barracudas", "conferenceId": "east", "divisionId": "atlantic", "colors": { "primary": "Turquoise", "secondary": "Orange" }, "selectable": false },
+    { "id": "CAP", "city": "Capital City", "nickname": "Sentinels", "conferenceId": "east", "divisionId": "atlantic", "colors": { "primary": "Wine", "secondary": "White" }, "selectable": false },
+
+    { "id": "MCI", "city": "Metro City", "nickname": "Cyclones", "conferenceId": "east", "divisionId": "central", "colors": { "primary": "Deep Teal", "secondary": "Silver" }, "selectable": false },
+    { "id": "IRN", "city": "Ironvale", "nickname": "Forge", "conferenceId": "east", "divisionId": "central", "colors": { "primary": "Charcoal", "secondary": "Copper" }, "selectable": true },
+    { "id": "RIV", "city": "Riverbend", "nickname": "Raptors", "conferenceId": "east", "divisionId": "central", "colors": { "primary": "Forest", "secondary": "Gold" }, "selectable": false },
+    { "id": "STL", "city": "Steelport", "nickname": "Stallions", "conferenceId": "east", "divisionId": "central", "colors": { "primary": "Steel", "secondary": "Scarlet" }, "selectable": false },
+    { "id": "RUS", "city": "Ruston", "nickname": "Riveters", "conferenceId": "east", "divisionId": "central", "colors": { "primary": "Brick", "secondary": "Cream" }, "selectable": false },
+
+    { "id": "LAK", "city": "Lakehurst", "nickname": "Wave", "conferenceId": "east", "divisionId": "southeast", "colors": { "primary": "Aqua", "secondary": "White" }, "selectable": false },
+    { "id": "MAP", "city": "Maple Ridge", "nickname": "Lumberjacks", "conferenceId": "east", "divisionId": "southeast", "colors": { "primary": "Forest", "secondary": "Gold" }, "selectable": true },
+    { "id": "GFL", "city": "Great Falls", "nickname": "Lynx", "conferenceId": "east", "divisionId": "southeast", "colors": { "primary": "Navy", "secondary": "Ice-Blue" }, "selectable": true },
+    { "id": "PAL", "city": "Palmetto", "nickname": "Pelicans", "conferenceId": "east", "divisionId": "southeast", "colors": { "primary": "Indigo", "secondary": "Sunset" }, "selectable": false },
+    { "id": "PIN", "city": "Pine Coast", "nickname": "Panthers", "conferenceId": "east", "divisionId": "southeast", "colors": { "primary": "Teal", "secondary": "Black" }, "selectable": false },
+
+    { "id": "FRO", "city": "Frostholm", "nickname": "Polar", "conferenceId": "west", "divisionId": "northwest", "colors": { "primary": "Ice-Blue", "secondary": "White" }, "selectable": true },
+    { "id": "HLP", "city": "Highland Peaks", "nickname": "Yetis", "conferenceId": "west", "divisionId": "northwest", "colors": { "primary": "Snow", "secondary": "Neon Pink" }, "selectable": false },
+    { "id": "COP", "city": "Copper Canyon", "nickname": "Miners", "conferenceId": "west", "divisionId": "northwest", "colors": { "primary": "Rust", "secondary": "Denim" }, "selectable": true },
+    { "id": "WRV", "city": "Wind River", "nickname": "Wolves", "conferenceId": "west", "divisionId": "northwest", "colors": { "primary": "Slate", "secondary": "Pine" }, "selectable": false },
+    { "id": "GLF", "city": "Glacier Falls", "nickname": "Grizzlies", "conferenceId": "west", "divisionId": "northwest", "colors": { "primary": "Midnight", "secondary": "Silver" }, "selectable": true },
+
+    { "id": "SUN", "city": "Sunridge", "nickname": "Suns", "conferenceId": "west", "divisionId": "pacific", "colors": { "primary": "Orange", "secondary": "Purple" }, "selectable": true },
+    { "id": "SOL", "city": "Solaris", "nickname": "Comets", "conferenceId": "west", "divisionId": "pacific", "colors": { "primary": "Crimson", "secondary": "Gold" }, "selectable": true },
+    { "id": "OCN", "city": "Oceanview", "nickname": "Tides", "conferenceId": "west", "divisionId": "pacific", "colors": { "primary": "Sea-foam", "secondary": "Navy" }, "selectable": false },
+    { "id": "RED", "city": "Redwood", "nickname": "Giants", "conferenceId": "west", "divisionId": "pacific", "colors": { "primary": "Cardinal", "secondary": "Cream" }, "selectable": false },
+    { "id": "AUR", "city": "Aurora Coast", "nickname": "Orcas", "conferenceId": "west", "divisionId": "pacific", "colors": { "primary": "Black", "secondary": "Ice" }, "selectable": false },
+
+    { "id": "GPL", "city": "Grand Plains", "nickname": "Bison", "conferenceId": "west", "divisionId": "southwest", "colors": { "primary": "Maroon", "secondary": "Wheat" }, "selectable": false },
+    { "id": "COR", "city": "Coral Coast", "nickname": "Stingrays", "conferenceId": "west", "divisionId": "southwest", "colors": { "primary": "Teal", "secondary": "Coral" }, "selectable": false },
+    { "id": "IMS", "city": "Iron Mesa", "nickname": "Rattlers", "conferenceId": "west", "divisionId": "southwest", "colors": { "primary": "Desert-Tan", "secondary": "Brick" }, "selectable": false },
+    { "id": "RGV", "city": "Rio Grande", "nickname": "Vaqueros", "conferenceId": "west", "divisionId": "southwest", "colors": { "primary": "Turquoise", "secondary": "Copper" }, "selectable": false },
+    { "id": "GMS", "city": "Golden Mesa", "nickname": "Gilas", "conferenceId": "west", "divisionId": "southwest", "colors": { "primary": "Sand", "secondary": "Indigo" }, "selectable": false }
+  ],
+  "rules": {
+    "seasonLength": 82,
+    "playIn": true,
+    "salaryCap": 120000000,
+    "luxuryTax": 145000000
+  },
+  "schedule": []
+}
