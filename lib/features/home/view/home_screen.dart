@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppColors.accent,
+                          color: AppColors.surface,
                           borderRadius: AppRadii.card,
                           border: Border.all(color: AppColors.border),
                         ),
@@ -173,9 +173,7 @@ class HomeScreen extends StatelessWidget {
 
       /// ── Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.surface,
-        selectedItemColor: AppColors.primaryText,
-        unselectedItemColor: AppColors.disabled,
+        backgroundColor: AppColors.scaffoldBackground,
         currentIndex: 0, // Home is index 0
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -243,7 +241,7 @@ class _ActionButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.accent,
+          color: AppColors.surface,
           borderRadius: AppRadii.card,
           border: Border.all(color: AppColors.border),
         ),

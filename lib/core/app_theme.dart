@@ -31,7 +31,7 @@ class AppTheme {
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.surface,
+        backgroundColor: AppColors.scaffoldBackground,
         selectedItemColor: AppColors.accent,
         unselectedItemColor: AppColors.disabled,
         showSelectedLabels: false,
