@@ -3,9 +3,14 @@ import 'app_constants.dart';
 
 class AppTheme {
   static ThemeData get darkTheme {
-    return ThemeData.dark().copyWith(
+    final base = ThemeData.dark();
+    return base.copyWith(
       scaffoldBackgroundColor: AppColors.scaffoldBackground,
-      primaryColor: AppColors.surface,
+      primaryColor: AppColors.accent,
+      colorScheme: base.colorScheme.copyWith(
+        primary: AppColors.accent,
+        secondary: AppColors.accent,
+      ),
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.scaffoldBackground,
         elevation: 0,
@@ -19,9 +24,15 @@ class AppTheme {
         bodyMedium: AppTextStyles.body,
         bodySmall: AppTextStyles.bodySecondary,
       ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
+          backgroundColor: AppColors.accent,
+          foregroundColor: AppColors.primaryText,
+        ),
+      ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.surface,
-        selectedItemColor: AppColors.primaryText,
+        selectedItemColor: AppColors.accent,
         unselectedItemColor: AppColors.disabled,
         showSelectedLabels: false,
         showUnselectedLabels: false,
