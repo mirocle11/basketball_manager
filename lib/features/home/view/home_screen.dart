@@ -35,7 +35,8 @@ class HomeScreen extends StatelessWidget {
                       // Using go_router: go (replace) or push
                       context.push(Routes.settings);
                     },
-                    icon: const Icon(Icons.settings, color: AppColors.primaryText),
+                    icon: const Icon(Icons.settings,
+                        color: AppColors.primaryText),
                   ),
                 ],
               ),
@@ -77,7 +78,8 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Quick Actions',
-                  style: AppTextStyles.h3.copyWith(color: AppColors.secondaryText),
+                  style:
+                      AppTextStyles.h3.copyWith(color: AppColors.secondaryText),
                 ),
               ),
             ),
@@ -171,9 +173,7 @@ class HomeScreen extends StatelessWidget {
 
       /// ── Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.surface,
-        selectedItemColor: AppColors.primaryText,
-        unselectedItemColor: AppColors.disabled,
+        backgroundColor: AppColors.scaffoldBackground,
         currentIndex: 0, // Home is index 0
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -202,7 +202,7 @@ class HomeScreen extends StatelessWidget {
         onTap: (idx) {
           switch (idx) {
             case 0:
-            // Already on Home; do nothing or maybe scroll to top
+              // Already on Home; do nothing or maybe scroll to top
               break;
             case 1:
               context.go(Routes.team);

@@ -1,3 +1,4 @@
+import 'package:basketball_manager/core/app_constants.dart';
 import 'package:flutter/material.dart';
 
 import '../cubit/team_selection_cubit.dart';
@@ -23,6 +24,7 @@ class TeamCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
+        color: AppColors.surface,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color scaffoldBackground = Color(0xFF121212);
-  static const Color surface = Color(0xFF1E1E1E);
-  static const Color border = Color(0xFF424242);
+  static const Color scaffoldBackground = Color(0xFF0D1B2A);
+  static const Color surface = Color(0xFF1B263B);
+  static const Color border = Color(0xFF415A77);
+  static const Color accent = Color(0xFFEA7600);
   static const Color primaryText = Colors.white;
   static const Color secondaryText = Color(0xFFB0B0B0);
   static const Color disabled = Color(0xFF757575);
@@ -45,7 +46,8 @@ class AppPaddings {
   static const double gap = 12;
   static const double gapLarge = 24;
 
-  static const EdgeInsets screen = EdgeInsets.symmetric(horizontal: 16, vertical: 12);
+  static const EdgeInsets screen =
+      EdgeInsets.symmetric(horizontal: 16, vertical: 12);
   static const EdgeInsets horizontal = EdgeInsets.symmetric(horizontal: 16);
   static const EdgeInsets vertical = EdgeInsets.symmetric(vertical: 12);
 }
