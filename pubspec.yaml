@@ -74,9 +74,35 @@ flutter:
     - assets/mock/season1.json
     - assets/mock/league_seed.json
     - assets/images/logo.png
+    - assets/logos/AUR.png
+    - assets/logos/BAY.png
+    - assets/logos/CAP.png
+    - assets/logos/COP.png
+    - assets/logos/FRO.png
+    - assets/logos/GFL.png
+    - assets/logos/GLF.png
+    - assets/logos/GMS.png
+    - assets/logos/GPL.png
     - assets/logos/HBS.png
+    - assets/logos/HLP.png
+    - assets/logos/IMS.png
+    - assets/logos/IRN.png
+    - assets/logos/LAK.png
+    - assets/logos/MAP.png
+    - assets/logos/MCI.png
     - assets/logos/NEO.png
+    - assets/logos/OCN.png
+    - assets/logos/PAL.png
+    - assets/logos/PIN.png
+    - assets/logos/RED.png
+    - assets/logos/RIV.png
+    - assets/logos/RUS.png
+    - assets/logos/RVG.png
     - assets/logos/SEA.png
+    - assets/logos/SOL.png
+    - assets/logos/STL.png
+    - assets/logos/SUN.png
+    - assets/logos/WRV.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
